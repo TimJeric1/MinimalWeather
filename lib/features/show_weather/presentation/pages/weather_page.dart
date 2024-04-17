@@ -22,9 +22,9 @@ class WeatherPage extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.location_pin),
-                      SizedBox(height: 8),
-                      Text('Lopar', style: Theme
+                      const Icon(Icons.location_pin),
+                      const SizedBox(height: 8),
+                      Text(weatherData.city, style: Theme
                           .of(context)
                           .textTheme
                           .titleMedium),
@@ -40,7 +40,7 @@ class WeatherPage extends ConsumerWidget {
               ),
             ),
             error: (error, _) => Center(child: Text(error.toString())),
-            loading: () => Center(child: CircularProgressIndicator()))
+            loading: () => const Center(child: CircularProgressIndicator()))
     );
   }
 }

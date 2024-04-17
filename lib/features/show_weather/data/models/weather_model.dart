@@ -7,9 +7,21 @@ class WeatherModel extends WeatherEntity {
 
   factory WeatherModel.fromMap(Map<String, dynamic> map) {
     return WeatherModel(
-      city: map['city'] as String,
+      city: map['city'] as String? ?? '',
       iconUrl: map['weather'][0] ['icon'] as String,
       temperature: (map['main']['temp'] as double).toInt(),
+    );
+  }
+
+  WeatherModel copyWith({
+    String? iconUrl,
+    int? temperature,
+    String? city,
+  }) {
+    return WeatherModel(
+      iconUrl: iconUrl ?? this.iconUrl,
+      temperature: temperature ?? this.temperature,
+      city: city ?? this.city,
     );
   }
 

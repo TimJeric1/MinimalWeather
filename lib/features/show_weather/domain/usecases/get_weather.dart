@@ -1,6 +1,7 @@
 
 
 
+import 'package:geolocator/geolocator.dart';
 import 'package:minimal_weather/features/show_weather/data/repositories/weather_repository_impl.dart';
 import 'package:minimal_weather/features/show_weather/domain/entities/weather_entity.dart';
 import 'package:minimal_weather/features/show_weather/domain/repositories/weather_repository.dart';
@@ -20,8 +21,8 @@ class GetWeather {
 
   GetWeather({required this.weatherRepository});
 
-  Future<WeatherEntity> call(String city) async {
-    return await weatherRepository.getWeather(city);
+  Future<WeatherEntity> call(Position position) async {
+    return await weatherRepository.getWeatherFromCoordinates(position);
   }
 
 

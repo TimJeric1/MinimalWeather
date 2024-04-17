@@ -24,13 +24,11 @@ class WeatherRepositoryImpl implements WeatherRepository {
 
 
   @override
-  Future<WeatherModel> getWeather(String city) async {
-    return await remoteDataSource.getWeatherAtPosition(city);
+  Future<WeatherModel> getWeatherFromCoordinates(Position position) async {
+    final String city = await remoteDataSource.getPlacemarkAtPosition(position);
+    final WeatherModel weather = await remoteDataSource.getWeatherAtPosition(position);
+    return weather.copyWith(city: city);
   }
 
-  @override
-  Future<String> getPlacemarkFromCoordinates(Position position) async {
-    return await remoteDataSource.getPlacemarkAtPosition(position);
-  }
 
 }
